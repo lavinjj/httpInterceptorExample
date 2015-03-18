@@ -26,8 +26,18 @@ module.exports = function(app) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use(methodOverride());
+  app.use(function (err, req, res, next) {
+    var apiKey = req.param('apiKey');
+    console.log('Api Key' + apiKey);
+    if (!apiKey) {
+      return res.status(404).send('Not Authorized, Missing ApiKey');
+    }
+
+    next();
+  });
   app.use(cookieParser());
   app.use(passport.initialize());
+
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));

@@ -7,6 +7,59 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Cookoff = require('../api/cookoffs/cookoffs.model');
+
+Cookoff.find({}).remove(function () {
+  Cookoff.create({
+    name: 'Cedar Fest BBQ',
+    info: 'Cedar Fest BBQ',
+    eventDate: '4/10/2015',
+    webSite: 'http://www.cedarparkchamber.org/',
+    contactName: 'Lyndee Matthews',
+    contactPhone: '512-260-7800',
+    contactEmail: 'info@cedarparkchamber.org',
+    kcbsRep: 'KAREN JANE WILLIAMS, RALPH WILLIAMS',
+    contestNumber: 5233,
+    prizeMoney: 15000,
+    active: true
+  }, {
+    name: 'BBQ Battle Royale at Taste of Dallas',
+    info: 'Dallas, TX',
+    eventDate: '6/13/2015',
+    webSite: 'http://www.arliequeevents.com/',
+    contactName: 'Arlie Bragg',
+    contactPhone: '615-477-7447',
+    contactEmail: 'arlie@arliequeevents.com',
+    kcbsRep: 'MIKE LAKE, THERESA LAKE',
+    contextNumber: 5778,
+    prizeMoney: 0,
+    active: true
+  }, {
+    name: 'City of Bedford Blues & BBQ Festival',
+    info: 'Bedford, TX',
+    eventDate: '9/4/2015',
+    webSite: 'http://www.bedfordbluesfest.com/',
+    contactName: 'Wendy Hartnett',
+    contactPhone: '817-952-2128',
+    contactEmail: 'wendy.hartnett@bedfordtx.gov',
+    kcbsRep: 'LYNDA VOTH, KAREN JANE WILLIAMS, RALPH WILLIAMS',
+    contextNumber: 5464,
+    prizeMoney: 0,
+    active: true
+  }, {
+    name: 'Bynum Schools Best of the Basin BBQ Championship',
+    info: 'Midland , TX',
+    eventDate: '4/17/2015',
+    webSite: 'http://www.bynumschool.org/',
+    contactName: 'Tracy Bush',
+    contactPhone: '432-520-0075',
+    contactEmail: 'tracy@bynumschool.org',
+    kcbsRep: 'BOB MCKINNON, TERRI MCKINNON',
+    contextNumber: 5225,
+    prizeMoney: 0,
+    active: true
+  })
+});
 
 Thing.find({}).remove(function() {
   Thing.create({

@@ -8,6 +8,12 @@ var CookoffsSchema = new Schema({
   info: String,
   eventDate: Date,
   webSite: String,
+  contactName: String,
+  contactPhone: String,
+  contactEmail: String,
+  kcbsRep: String,
+  contextNumber: Number,
+  prizeMoney: Number,
   active: Boolean
 });
 
