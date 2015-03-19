@@ -31,7 +31,7 @@ Cookoff.find({}).remove(function () {
     contactPhone: '615-477-7447',
     contactEmail: 'arlie@arliequeevents.com',
     kcbsRep: 'MIKE LAKE, THERESA LAKE',
-    contextNumber: 5778,
+    contestNumber: 5778,
     prizeMoney: 0,
     active: true
   }, {
@@ -43,7 +43,7 @@ Cookoff.find({}).remove(function () {
     contactPhone: '817-952-2128',
     contactEmail: 'wendy.hartnett@bedfordtx.gov',
     kcbsRep: 'LYNDA VOTH, KAREN JANE WILLIAMS, RALPH WILLIAMS',
-    contextNumber: 5464,
+    contestNumber: 5464,
     prizeMoney: 0,
     active: true
   }, {
@@ -55,7 +55,7 @@ Cookoff.find({}).remove(function () {
     contactPhone: '432-520-0075',
     contactEmail: 'tracy@bynumschool.org',
     kcbsRep: 'BOB MCKINNON, TERRI MCKINNON',
-    contextNumber: 5225,
+    contestNumber: 5225,
     prizeMoney: 0,
     active: true
   })

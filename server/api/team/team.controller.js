@@ -2,9 +2,11 @@
 
 var _ = require('lodash');
 var Team = require('./team.model');
+var validateApiKey = require('../../components/apikey');
 
 // Get list of teams
 exports.index = function(req, res) {
+  validateApiKey(req, res);
   Team.find(function (err, teams) {
     if(err) { return handleError(res, err); }
     return res.json(200, teams);
@@ -13,6 +15,7 @@ exports.index = function(req, res) {
 
 // Get a single team
 exports.show = function(req, res) {
+  validateApiKey(req, res);
   Team.findById(req.params.id, function (err, team) {
     if(err) { return handleError(res, err); }
     if(!team) { return res.send(404); }
@@ -22,6 +25,7 @@ exports.show = function(req, res) {
 
 // Creates a new team in the DB.
 exports.create = function(req, res) {
+  validateApiKey(req, res);
   Team.create(req.body, function(err, team) {
     if(err) { return handleError(res, err); }
     return res.json(201, team);
@@ -30,6 +34,7 @@ exports.create = function(req, res) {
 
 // Updates an existing team in the DB.
 exports.update = function(req, res) {
+  validateApiKey(req, res);
   if(req.body._id) { delete req.body._id; }
   Team.findById(req.params.id, function (err, team) {
     if (err) { return handleError(res, err); }
@@ -44,6 +49,7 @@ exports.update = function(req, res) {
 
 // Deletes a team from the DB.
 exports.destroy = function(req, res) {
+  validateApiKey(req, res);
   Team.findById(req.params.id, function (err, team) {
     if(err) { return handleError(res, err); }
     if(!team) { return res.send(404); }

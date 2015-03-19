@@ -2,9 +2,11 @@
 
 var _ = require('lodash');
 var Cookoffs = require('./cookoffs.model');
+var validateApiKey = require('../../components/apikey');
 
 // Get list of cookoffs
 exports.index = function(req, res) {
+  validateApiKey(req, res);
   Cookoffs.find(function (err, cookoffs) {
     if(err) { return handleError(res, err); }
     return res.json(200, cookoffs);
@@ -13,6 +15,7 @@ exports.index = function(req, res) {
 
 // Get a single cookoffs
 exports.show = function(req, res) {
+  validateApiKey(req, res);
   Cookoffs.findById(req.params.id, function (err, cookoffs) {
     if(err) { return handleError(res, err); }
     if(!cookoffs) { return res.send(404); }
@@ -22,6 +25,7 @@ exports.show = function(req, res) {
 
 // Creates a new cookoffs in the DB.
 exports.create = function(req, res) {
+  validateApiKey(req, res);
   Cookoffs.create(req.body, function(err, cookoffs) {
     if(err) { return handleError(res, err); }
     return res.json(201, cookoffs);
@@ -30,6 +34,7 @@ exports.create = function(req, res) {
 
 // Updates an existing cookoffs in the DB.
 exports.update = function(req, res) {
+  validateApiKey(req, res);
   if(req.body._id) { delete req.body._id; }
   Cookoffs.findById(req.params.id, function (err, cookoffs) {
     if (err) { return handleError(res, err); }
@@ -44,6 +49,7 @@ exports.update = function(req, res) {
 
 // Deletes a cookoffs from the DB.
 exports.destroy = function(req, res) {
+  validateApiKey(req, res);
   Cookoffs.findById(req.params.id, function (err, cookoffs) {
     if(err) { return handleError(res, err); }
     if(!cookoffs) { return res.send(404); }

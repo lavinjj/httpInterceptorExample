@@ -1,3 +1,140 @@
 <div class="col-md-12">
-This is the cookoffs view.
+  <div ng-show="view === 'list'">
+    <h4>Upcoming Cook Offs in Texas</h4>
+
+    <div>&nbsp;</div>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Website</th>
+          <th>
+            <button type="button" class="btn btn-default btn-lg"
+                    ng-click="addNewCookOff()">
+              <span class="fa fa-plus"></span> Add
+            </button>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="cookOff in cookOffs">
+          <td class="col-xs-4">{{cookOff.name}}</td>
+          <td class="col-xs-2">{{cookOff.info}}</td>
+          <td class="col-xs-2" ng-bind="formatDate(cookOff.eventDate)"></td>
+          <td class="col-xs-2">{{cookOff.webSite}}</td>
+          <td class="col-xs-1">
+            <button type="button" class="btn btn-default btn-lg"
+                    ng-click="editCookOff($index)">
+              <span class="fa fa-edit"></span> Edit
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div ng-show="view === 'edit'">
+    <form class="form-horizontal">
+      <formset>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="name">Name</label>
+
+          <div class="col-xs-4">
+            <input id="name" name="name" type="text" class="form-control" required=""
+                   ng-model="cookOff.name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="location">Location</label>
+
+          <div class="col-xs-4">
+            <input id="location" name="location" type="text" class="form-control" required=""
+                   ng-model="cookOff.info">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="eventDate">Event Date</label>
+
+          <div class="col-xs-4">
+            <input id="eventDate" name="eventDate" type="text" class="form-control" required=""
+                   ng-model="cookOff.eventDate">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="webSite">Web Site</label>
+
+          <div class="col-xs-4">
+            <input id="webSite" name="webSite" type="url" class="form-control" required=""
+                   ng-model="cookOff.webSite">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="contactName">Contact Name</label>
+
+          <div class="col-xs-4">
+            <input id="contactName" name="contactName" type="text" class="form-control" required=""
+                   ng-model="cookOff.contactName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="contactPhone">Contact Phone</label>
+
+          <div class="col-xs-4">
+            <input id="contactPhone" name="contactPhone" type="tel" class="form-control" required=""
+                   ng-model="cookOff.contactPhone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="contactEmail">Contact Email</label>
+
+          <div class="col-xs-4">
+            <input id="contactEmail" name="contactEmail" type="email" class="form-control" required=""
+                   ng-model="cookOff.contactEmail">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="kcbsRep">KCBS Rep</label>
+
+          <div class="col-xs-4">
+            <input id="kcbsRep" name="kcbsRep" type="text" class="form-control" required=""
+                   ng-model="cookOff.kcbsRep">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="contestNumber">Contest Number</label>
+
+          <div class="col-xs-4">
+            <input id="contestNumber" name="contestNumber" type="number" class="form-control" required=""
+                   ng-model="cookOff.contestNumber">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-xs-2 control-label" for="prizeMoney">Prize Money</label>
+
+          <div class="col-xs-4">
+            <input id="prizeMoney" name="prizeMoney" type="number" class="form-control" required=""
+                   ng-model="cookOff.prizeMoney">
+          </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="form-group">
+          <div class="col-xs-7 pull-right">
+            <a ng-click="update()" class="btn btn-success">Update</a>
+            <a ng-click="cancelEdit()" class="btn btn-warning">Cancel</a>
+          </div>
+        </div>
+      </formset>
+    </form>
+    <div>&nbsp;</div>
+  </div>
+  <div>&nbsp;</div>
+  <div>
+    <h4>Errors</h4>
+    <ul>
+      <li ng-repeat="error in errors">{{error}}</li>
+    </ul>
+  </div>
 </div>
