@@ -9,6 +9,10 @@ angular.module('httpInterceptorExampleApp')
       },
       response: function (response) {
         response.config.responseTimestamp = new Date().getTime();
+
+        var time = response.config.responseTimestamp - response.config.requestTimestamp;
+        console.log('The request ' + response.config.url + ' took ' + (time / 1000) + ' seconds.');
+
         return response;
       }
     };

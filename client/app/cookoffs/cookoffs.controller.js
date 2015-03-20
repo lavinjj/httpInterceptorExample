@@ -30,12 +30,16 @@ angular.module('httpInterceptorExampleApp')
     $scope.update = function () {
       if ($scope.cookOff._id) {
         cookOffData.updateCookOff($scope.cookOff).then(function (response) {
+
           //var time = response.config.responseTimestamp - response.config.requestTimestamp;
           //console.log('The request updateCookOff took ' + (time / 1000) + ' seconds.');
+
           cookOffData.getCookOffs().then(function (response) {
             $scope.cookOffs = response.data;
+
             //var time = response.config.responseTimestamp - response.config.requestTimestamp;
             //console.log('The request getCookOffs took ' + (time / 1000) + ' seconds.');
+
           }, function () {
             $scope.errors = errors.getErrorMessages();
           });
@@ -46,12 +50,16 @@ angular.module('httpInterceptorExampleApp')
         });
       } else {
         cookOffData.addCookOff($scope.cookOff).then(function (response) {
+
           //var time = response.config.responseTimestamp - response.config.requestTimestamp;
           //console.log('The request addCookOff took ' + (time / 1000) + ' seconds.');
+
           cookOffData.getCookOffs().then(function (response) {
             $scope.cookOffs = response.data;
+
             //var time = response.config.responseTimestamp - response.config.requestTimestamp;
             //console.log('The request getCookOffs took ' + (time / 1000) + ' seconds.');
+
           }, function () {
             $scope.errors = errors.getErrorMessages();
           });
@@ -66,8 +74,10 @@ angular.module('httpInterceptorExampleApp')
     $scope.init = function () {
       cookOffData.getCookOffs().then(function (response) {
         $scope.cookOffs = response.data;
-        var time = response.config.responseTimestamp - response.config.requestTimestamp;
-        console.log('The request getCookOffs took ' + (time / 1000) + ' seconds.');
+
+        //var time = response.config.responseTimestamp - response.config.requestTimestamp;
+        //console.log('The request getCookOffs took ' + (time / 1000) + ' seconds.');
+
       }, function () {
         $scope.errors = errors.getErrorMessages();
       });
